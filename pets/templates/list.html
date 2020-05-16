@@ -1,6 +1,5 @@
 {% extends 'base.html' %} 
 <!-- pets/home.html -->
-
 {% block content %}
 {% load static%}
 <!DOCTYPE HTML>
@@ -9,7 +8,7 @@
 		<title>Photon by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="{% static 'pets/css//main.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'pets/css/main.css' %}">
 		<noscript><link rel="stylesheet" type="text/css" href="{% static 'pets/css/noscript.css' %}" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -17,13 +16,16 @@
 		<!-- Header -->
 			<section id="header">
 				<div class="inner">
-					<span class="icon solid major fa-cloud"></span>
-					<h1>Hi, I'm <strong>Photon</strong>, another fine<br />
-					little freebie from <a href="http://html5up.net">HTML5 UP</a>.</h1>
-					<p>Accumsan feugiat mi commodo erat lorem ipsum, sed magna<br />
-					lobortis feugiat sapien sed etiam volutpat accumsan.</p>
+					<h1><strong>Pet Sitter</strong>, the revolutionary<br />
+					website from <a href="#">Pets INC</a>.</h1>
+					<p>Provididng a revolutionary pet experience<br />
+					Even Before the Corona Virus</p>
 					<ul class="actions special">
-						<li><a href="#one" class="button scrolly">Discover</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li><a href="#" class="button scrolly">Book an appointment today!</a></li>
+                        {% else %}
+                        <li><a href="#" class="button scrolly">Book an appointment today!</a></li>
+                        {% endif %}
 					</ul>
 				</div>
 			</section>
@@ -34,13 +36,13 @@
 					<div class="row gtr-150">
 						<div class="col-6 col-12-medium">
 							<header class="major">
-								<h2>Lorem ipsum dolor adipiscing<br />
-								amet dolor consequat</h2>
+								<h2>Putting a twist on<br />
+								Pet Sitting</h2>
 							</header>
 							<p>Adipiscing a commodo ante nunc accumsan et interdum mi ante adipiscing. A nunc lobortis non nisl amet vis sed volutpat aclacus nascetur ac non. Lorem curae et ante amet sapien sed tempus adipiscing id accumsan.</p>
 						</div>
 						<div class="col-6 col-12-medium imp-medium">
-							<span class="image fit"><img src="{% static pic01.jpg%}" alt="" /></span>
+							<span class="image fit"><img src="{% static 'pets/images/pic01.jpg' %}" alt="" /></span>
 						</div>
 					</div>
 				</div>
