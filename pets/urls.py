@@ -1,8 +1,9 @@
-from . import views
 from django.urls import path
-from pets.views import HomeView
+from pets.views import PageListView, PageDetailView, PageCreateView
+
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home-page'),
-
+    path('', PageListView.as_view(), name='wiki-list-page'),
+    path('create/', PageCreateView.as_view(), name='wiki-new-page'),
+    path('<str:slug>/', PageDetailView.as_view(), name='wiki-details-page'),
 ]
