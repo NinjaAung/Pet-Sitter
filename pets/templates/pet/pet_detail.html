@@ -31,7 +31,8 @@
           {{pet.weight_in_pounds}}lbs
       </p>
       <hr>
-      <a href="{% url 'pets-list-page' %}">Back to List</a>
+      <a href="{% url 'pets-list-page' %}"class="btn btn-primary ml-2" >Back to List</a>
+      <a href="{% url 'pets-list-page' %}" class="btn btn-danger ml-2">Delete</a>
     </div>
   </div>
 {% endblock %}

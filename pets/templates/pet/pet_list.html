@@ -6,12 +6,15 @@
 {% endif %}
 
 <ul style="margin-top: 25px">
-    {% for pet in pets %}
-    <li>
-        <strong>Pet name:</strong>
-        <a href="{% url 'pet-detail-page' pet.id %}">{{pet.pet_name}}</a>
-    </li>
-    {% endfor %}
+    {% if pets %}
+    <div class="card-columns">
+      {% for pet in pets %}
+        {% include "partials/card.html" %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-primary" role="alert">No Pets to display.</div>
+    {% endif %}
 </ul>
 
 {% endblock %}

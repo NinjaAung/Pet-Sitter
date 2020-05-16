@@ -1,0 +1,14 @@
+<div class="card mb-3">
+    <h5>
+    <a href="{% url 'pet-detail-page' pet.id %}" title="pet detail page" >{{ pet.pet_name }}</a>
+    </h5>
+    <div class="card-body border-dark">
+      <p class="card-text text-dark">
+        <ul>
+          <li>Species: {{ pet.species }}</li>
+          <li>Breed: {{ pet.breed }}</li>
+          <li>Weight: {{pet.weight_in_pounds}}</li>
+        </ul>
+        <hr>
+    </div>
+  </div>
