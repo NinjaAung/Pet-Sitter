@@ -1,10 +1,5 @@
 from django.contrib import admin
-from pets.models import Page
+from . import models
 
-
-class PageAdmin(admin.ModelAdmin):
-    """ Show helpful fields on the changelist page. """
-    list_display = ('title', 'slug', 'author', 'created', 'modified')
-
-
-admin.site.register(Page, PageAdmin)
+admin.site.register(models.Pet)
+admin.site.register(models.Appointment)

@@ -1,65 +1,66 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.utils.text import slugify
-
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.utils import timezone
 
-from pets.models import Page
-from pets.forms import PageForm
-
-
-class PageCreateView(CreateView):
-  '''Create a new wiki page'''
-  model = Page
-  fields = ['title', 'content', 'author']
-  template_name = 'create_page.html'
+from pets.models import Pet, Appointment
 
 
-class PageListView(ListView):
-  """ Renders a list of all Pages. """
-  model = Page
+class HomeView(ListView):
+    '''Render home page'''
 
-  def get(self, request):
-      """ GET a list of Pages. """
-      pages = self.get_queryset().all()
-      return render(request, 'list.html', {
-          'pages': pages,
-      })
+    def get(self, req):
+        return render(req, 'home.html')
 
 
-class PageDetailView(DetailView):
-    """ Renders a specific page based on it's slug."""
-    model = Page
+class PetCreateView(CreateView):
+    '''Create a pet form'''
+    model = Pet
+    fields = ['pet_name', 'species', 'breed', 'weight_in_pounds', 'owner']
+    template_name = 'pet/create_pet.html'
 
-    def get(self, request, slug):
-        """ Returns a specific wiki page by slug. """
-        page = self.get_queryset().get(slug__iexact=slug)
-        return render(request, 'page.html', {
-            'page': page,
-            'form': PageForm()
+
+class PetsListView(ListView):
+    '''Render created pets'''
+    model = Pet
+
+    def get(self, req):
+        pets = self.get_queryset().all()
+        return render(req, 'pet/pet_list.html', {
+            'pets': pets
         })
 
-    def post(self, req, slug):
-        '''Edit the page's information'''
-        form = PageForm(req.POST)
 
-        page = self.get_queryset().get(slug__iexact=slug)
+class PetDetailView(DetailView):
+    '''Render pet information'''
 
-        if req.POST.get('delete'):
-            obj.delete()
-            return redirect('/')
+    def get(self, req, pet_id):
+        return render(req, 'pet/pet_detail.html', {
+            'pet': Pet.objects.get(id=pet_id)
+        })
 
-        '''['title', 'author', 'content'] '''
-        page.title = req.POST['title']
-        page.content = req.POST['content']
-        page.author = req.user
-        '''['title', 'author', 'content'] '''
-     
-        page.slug = slugify(page.title)
 
-        page.save()
+class AppointmentCreateView(CreateView):
+    '''Create an appointment form'''
+    model = Appointment
+    fields = ['date_of_appointment',
+              'duration_minutes', 'special_instructions', 'pet']
+    template_name = 'calender/create_appointment.html'
 
-        return HttpResponseRedirect(reverse('wiki-details-page', args=[page.slug]))
+
+class CalenderListView(ListView):
+    '''Render all appointments'''
+    model = Appointment
+
+    def get(self, req):
+        appointments = self.get_queryset().all()
+        return render(req, 'calender/calender_list.html', {
+            'appointments': appointments.filter(
+                # renders things greater than today's date
+                date_of_appointment__gte=timezone.now()
+                # Sorts by the soonest first. Put '-' in front of the first argument for greatest to least.
+                # Example: '-date_of_appointment' === greatest to least order
+            ).order_by('date_of_appointment', 'date_of_appointment')
+        })
