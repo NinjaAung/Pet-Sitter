@@ -1,3 +1,9 @@
+
+
 from django.shortcuts import render
 
-# Create your views here.
+
+class omeView(ListView):
+
+    def get(self, req):
+        return render(req, 'home.html')
