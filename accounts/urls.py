@@ -1,9 +1,7 @@
 from django.contrib import admin
-from accounts.views import SignupView
+from accounts.views import RegisterView
 from django.urls import path, include
 
 urlpatterns = [
-    # login & SignUp
-    path('', include('django.contrib.auth.urls')),
-    path('signup/', SignupView.as_view(), name='signup')
+    path('register/', RegisterView.as_view(), name='register')
 ]
