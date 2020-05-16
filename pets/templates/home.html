@@ -1,75 +1,82 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 <!-- pets/home.html -->
 {% block content %}
 {% load static%}
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Photon by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="{% static 'pets/css/main.css' %}">
-		<noscript><link rel="stylesheet" type="text/css" href="{% static 'pets/css/noscript.css' %}" /></noscript>
-	</head>
-	<body class="is-preload">
 
-		<!-- Header -->
-			<section id="header">
-				<div class="inner">
-					<h1><strong>Pet Sitter</strong>, the revolutionary<br />
-					website from <a href="#">Pets INC</a>.</h1>
-					<p>Provididng a revolutionary pet experience<br />
-					Even Before the Corona Virus</p>
-					<ul class="actions special">
-                        {% if request.user.is_authenticated %}
-                        <li><a href="{% url 'calender-list-page %}" class="button scrolly">Book an appointment today!</a></li>
-                        {% else %}
-                        <li><a href="{% url 'login' %}" class="button scrolly">Book an appointment today!</a></li>
-                        {% endif %}
-					</ul>
+<head>
+	<title>Photon by HTML5 UP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="{% static 'pets/css/main.css' %}">
+	<noscript>
+		<link rel="stylesheet" type="text/css" href="{% static 'pets/css/noscript.css' %}" /></noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<section id="header">
+		<div class="inner">
+			<h1><strong>Pet Sitter</strong>, the revolutionary<br />
+				website from <a href="#">Pets INC</a>.</h1>
+			<p>Provididng a revolutionary pet experience<br />
+				Even Before the Corona Virus</p>
+			<ul class="actions special">
+				{% if request.user.is_authenticated %}
+				<li><a href="{% url 'calender-list-page' %}" class="button scrolly">Book an appointment today!</a></li>
+				{% else %}
+				<li><a href="{% url 'login' %}" class="button scrolly">Book an appointment today!</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	</section>
+
+	<!-- One -->
+	<section id="one" class="main style1">
+		<div class="container">
+			<div class="row gtr-150">
+				<div class="col-6 col-12-medium">
+					<header class="major">
+						<h2>Putting a twist on<br />
+							Pet Sitting</h2>
+					</header>
+					<p>Adipiscing a commodo ante nunc accumsan et interdum mi ante adipiscing. A nunc lobortis non nisl
+						amet vis sed volutpat aclacus nascetur ac non. Lorem curae et ante amet sapien sed tempus
+						adipiscing id accumsan.</p>
 				</div>
-			</section>
-
-		<!-- One -->
-			<section id="one" class="main style1">
-				<div class="container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<header class="major">
-								<h2>Putting a twist on<br />
-								Pet Sitting</h2>
-							</header>
-							<p>Adipiscing a commodo ante nunc accumsan et interdum mi ante adipiscing. A nunc lobortis non nisl amet vis sed volutpat aclacus nascetur ac non. Lorem curae et ante amet sapien sed tempus adipiscing id accumsan.</p>
-						</div>
-						<div class="col-6 col-12-medium imp-medium">
-							<span class="image fit"><img src="{% static 'pets/images/pic01.jpg' %}" alt="" /></span>
-						</div>
-					</div>
+				<div class="col-6 col-12-medium imp-medium">
+					<span class="image fit"><img src="{% static 'pets/images/pic01.jpg' %}" alt="" /></span>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 
-		<!-- Footer -->
-			<section id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</section>
+	<!-- Footer -->
+	<section id="footer">
+		<ul class="icons">
+			<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+			<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+			<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+			<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+			<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+		</ul>
+		<ul class="copyright">
+			<li>&copy; Untitled</li>
+			<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+		</ul>
+	</section>
 
-		<!-- Scripts -->
-			<script src="{% static 'pets/js/jquery.min.js' %}"></script>
-			<script src="{% static 'pets/js/jquery.scrolly.min.js' %}"></script>
-			<script src="{% static 'pets/js/browser.min.js' %}"></script>
-			<script src="{% static 'pets/js/breakpoints.min.js' %}"></script>
-			<script src="{% static 'pets/js/util.js' %}"></script>
-			<script src="{% static 'pets/js/main.js' %}"></script>
+	<!-- Scripts -->
+	<script src="{% static 'pets/js/jquery.min.js' %}"></script>
+	<script src="{% static 'pets/js/jquery.scrolly.min.js' %}"></script>
+	<script src="{% static 'pets/js/browser.min.js' %}"></script>
+	<script src="{% static 'pets/js/breakpoints.min.js' %}"></script>
+	<script src="{% static 'pets/js/util.js' %}"></script>
+	<script src="{% static 'pets/js/main.js' %}"></script>
 
-	</body>
+</body>
+
 </html>
 {% endblock %}
