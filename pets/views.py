@@ -1,9 +1,8 @@
-
-
+from django.views.generic.list import ListView
 from django.shortcuts import render
 
 
-class omeView(ListView):
+class HomeView(ListView):
 
     def get(self, req):
-        return render(req, 'home.html')
+        return render(req, './templates/home.html')
