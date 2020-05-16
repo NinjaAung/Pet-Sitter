@@ -22,7 +22,7 @@
 					Even Before the Corona Virus</p>
 					<ul class="actions special">
                         {% if request.user.is_authenticated %}
-                        <li><a href="{% url 'register' %}" class="button scrolly">Book an appointment today!</a></li>
+                        <li><a href="{% url 'calender-list-page %}" class="button scrolly">Book an appointment today!</a></li>
                         {% else %}
                         <li><a href="{% url 'login' %}" class="button scrolly">Book an appointment today!</a></li>
                         {% endif %}
